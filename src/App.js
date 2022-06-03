@@ -27,7 +27,7 @@ function App() {
       {categories.map((category) => {
         return (
           <div className='category-container' key={category.id}>
-            {/* <img src="" alt="" /> */}
+            <div className='background-image' />
             <div className='category-body-container'>
               <h2>{category.title}</h2>
               <p>Shop Now</p>
