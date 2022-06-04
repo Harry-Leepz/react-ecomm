@@ -1,7 +1,5 @@
 import Directory from "./components/directory/directory.component";
 
-import "./categories.styles.scss";
-
 function App() {
   const categories = [
     {
