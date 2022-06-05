@@ -29,14 +29,7 @@ function App() {
     },
   ];
 
-  return (
-    <Directory categories={categories} />
-    // <div className='categories-container'>
-    //   {categories.map((category) => {
-    //     return <CategoryItem key={category.id} category={category} />;
-    //   })}
-    // </div>
-  );
+  return <Directory categories={categories} />;
 }
 
 export default App;
