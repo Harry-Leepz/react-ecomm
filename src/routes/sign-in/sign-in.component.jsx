@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -6,16 +5,7 @@ import {
 
 import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
 
-const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
 const SignIn = () => {
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
-
   // Login with Google Popup
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
