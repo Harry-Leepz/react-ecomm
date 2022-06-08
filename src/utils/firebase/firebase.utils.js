@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 // Firestore imports for getting documents and
@@ -65,4 +66,10 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   }
 
   return userDocRef;
+};
+
+// Native Google Firebase Provider, to authenticate with email and password
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await createUserWithEmailAndPassword(auth, email, password);
 };
