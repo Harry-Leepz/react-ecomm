@@ -41,7 +41,11 @@ export const signInWithGoogleRedirect = () =>
 export const db = getFirestore();
 
 // Create new user document for registering/signing in
-export const createUserDocumentFromAuth = async (userAuth) => {
+// additionalInfo parameter is used to provide a display for users singing up via form
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInfo = {}
+) => {
   const userDocRef = doc(db, "users", userAuth.uid);
   console.log(userDocRef);
 
@@ -59,6 +63,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
         displayName,
         email,
         createdAt,
+        ...additionalInfo,
       });
     } catch (error) {
       console.log("Error creating the user", error.message);
