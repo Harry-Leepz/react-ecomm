@@ -11,15 +11,13 @@ import {
 import "./sign-in-form.styles.scss";
 
 const defaultFormFields = {
-  displayName: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { email, password } = formFields;
 
   // reset form
   const resetFormFields = () => {
@@ -29,29 +27,9 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // check passwords match
-    if (password !== confirmPassword) {
-      alert("Your passwords do not match!!");
-      return;
-    }
-
     try {
-      // create new user with email and password authentication
-      const { user } = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      // if new user is created via form, update the displayname using form data
-      await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
-    } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use!");
-      } else {
-        console.log("user creation encountered an error", error);
-      }
-    }
+    } catch (error) {}
   };
 
   // set state with user form input values
@@ -62,18 +40,9 @@ const SignInForm = () => {
 
   return (
     <div className='sign-up-container'>
-      <h2>Don't have an account ?</h2>
-      <span>Sign Up with your email and password</span>
+      <h2>Already have an account ?</h2>
+      <span>Sign In with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          label={"Display Name"}
-          name='displayName'
-          value={displayName}
-          onChange={handleChange}
-          type='text'
-          required
-        />
-
         <FormInput
           label={"Email"}
           name='email'
@@ -93,17 +62,7 @@ const SignInForm = () => {
           required
         />
 
-        <FormInput
-          label={"Confirm Password"}
-          name='confirmPassword'
-          value={confirmPassword}
-          onChange={handleChange}
-          type='password'
-          autoComplete='on'
-          required
-        />
-
-        <Button type='submit'>Sign Up</Button>
+        <Button type='submit'>Sign In</Button>
       </form>
     </div>
   );
