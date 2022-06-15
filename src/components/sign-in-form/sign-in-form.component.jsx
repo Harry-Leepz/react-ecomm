@@ -68,8 +68,12 @@ const SignInForm = () => {
           required
         />
 
-        <Button type='submit'>Sign In</Button>
-        <Button onClick={signInWithGoogle}>Google Sign In</Button>
+        <div className='buttons-container'>
+          <Button type='submit'>Sign In</Button>
+          <Button buttonType='google' onClick={signInWithGoogle}>
+            Google Sign In
+          </Button>
+        </div>
       </form>
     </div>
   );
