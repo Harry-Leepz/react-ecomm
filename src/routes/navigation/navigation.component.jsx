@@ -10,7 +10,6 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
 
   return (
     <Fragment>
@@ -22,9 +21,15 @@ const Navigation = () => {
           <Link className='nav-link' to='/shop'>
             SHOP
           </Link>
-          <Link className='nav-link' to='/auth'>
-            SIGN-IN
-          </Link>
+          {currentUser ? (
+            // If current user is TRUE, show Sign-Out
+            <span className='nav-lin'>SIGN-OUT</span>
+          ) : (
+            // Else show Sign-In
+            <Link className='nav-link' to='/auth'>
+              SIGN-IN
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />
