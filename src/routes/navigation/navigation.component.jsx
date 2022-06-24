@@ -29,7 +29,7 @@ const Navigation = () => {
           </Link>
           {currentUser ? (
             // If current user is TRUE, show Sign-Out
-            <span className='nav-lin' onClick={signOutHandler}>
+            <span className='nav-link' onClick={signOutHandler}>
               SIGN-OUT
             </span>
           ) : (
