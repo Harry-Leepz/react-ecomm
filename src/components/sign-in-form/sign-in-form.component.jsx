@@ -1,9 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-
-import { UserContext } from "../../contexts/user.context";
 
 import {
   signInWithGooglePopup,
@@ -21,9 +19,6 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  // Instantiate the use of the sser context
-  const { setCurrentUser } = useContext(UserContext);
 
   // reset form
   const resetFormFields = () => {
