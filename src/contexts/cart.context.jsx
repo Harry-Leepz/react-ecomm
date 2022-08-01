@@ -1,5 +1,11 @@
 import { useState, createContext } from "react";
 
+const addCartItem = (cartItems, productToAdd) => {
+  // find if cartItems includes the product being added to the cart
+  // if found, increment the quantity
+  // return new array with modified cartitems / new Cart item
+};
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
